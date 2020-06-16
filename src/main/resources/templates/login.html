@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<link th:href="@{/css/mainlayout.css}" rel="stylesheet" type="text/css"/>
+<head>
+    <title>Login </title>
+</head>
+<body>
+<div class="main-container">
+    <div class="center-container">
+        <div class="invalid" th:if="${param.error}">
+            <a class="text-class">Zły login lub hasło.</a>
+        </div>
+        <div class="logout" th:if="${param.logout}">
+            <a class="text-class">Zostałeś wylogowany.</a>
+        </div>
+        <div class="form-style">
+            <form class="form-signin" th:action="@{/login}" method="post">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                <div th:if="${param.error}">
+                    Invalid email and password.
+                </div>
+                <div th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required="" />
+                </br>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="" />
+                </br>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
